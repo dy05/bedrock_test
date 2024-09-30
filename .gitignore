@@ -28,4 +28,5 @@ wp-cli.local.yml
 
 .idea/
 .vscode/
+node_modules/
 
