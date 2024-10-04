@@ -122,3 +122,21 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
+
+add_action('wp_loaded', function() {
+    app('session')->isStarted() || app('session')->start();
+});
+
+add_action('init', function () {
+    if (env('WP_ENV') !== 'development') :
+        return;
+    endif;
+
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
+    header('Access-Control-Allow-Credentials: true');
+}, 1);
+
+rest_api_init('rest_api_init',  function () {
+    remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
+});
