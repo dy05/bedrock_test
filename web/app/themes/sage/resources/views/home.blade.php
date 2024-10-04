@@ -106,7 +106,7 @@
       </div>
     </div>
     <div class="mt-8 md:mt-0 md:col-span-6 md:col-start-7">
-      <form id="contact-form">
+      <form id="contact-form" method="POST">
         <div class="md:grid">
           <x-input name="firstname" placeholder="Dupond" label="Nom" class="md:col-span-6" />
           <x-input name="lastname" placeholder="" label="Prénom" class="md:col-span-6" />
@@ -169,44 +169,63 @@
 
     async function submitForm(e) {
       e.preventDefault();
-      try {
-        let _formData = new FormData(e.target);
-        let _host = window.location.protocol + '//' + window.location.host;
-        let _response = await fetch('/api/contact', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Accept-Type': 'application/json',
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': _csrfToken,
-          },
-          body: _formData
-        });
+      // try {
+      //   let _formData = new FormData(e.target);
+        // let _host = window.location.protocol + '//' + window.location.host;
+      //   let _response = await fetch('/api/contact', {
+      //     method: 'POST',
+      //     headers: {
+      //       'Accept': 'application/json',
+      //       'Accept-Type': 'application/json',
+      //       'Content-Type': 'application/json',
+      //       'X-CSRF-TOKEN': _csrfToken,
+      //     },
+      //     body: _formData
+      //   });
+      //
+      //   console.log('_response')
+      //   console.log(_response)
+      //   // let _data = await _response.json();
+      //   let _data = await _response.text();
+      //   console.log('_data')
+      //   console.log(_data)
+      // } catch (err) {
+      //   console.log('err')
+      //   console.log(err)
+      // }
 
-        console.log('_response')
-        console.log(_response)
-        // let _data = await _response.json();
-        let _data = await _response.text();
-        console.log('_data')
-        console.log(_data)
-      } catch (err) {
-        console.log('err')
-        console.log(err)
-      }
-        // .then((response) => {
-        //   console.log('response')
-        //   console.log(response)
-        //   return response.json()
-        // })
-        // .then((data) => {
-        //   console.log('Success:', data)
-        //   e.target.reset();
-        // })
-        // .catch((error) => {
-        //   console.log('error')
-        //   console.log(error)
-        //   // console.error('Error:', error)
-        // });
+      let _formData = new FormData(e.target);
+      // fetch('/api/contact', {
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Accept-Type': 'application/json',
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': _csrfToken,
+        },
+        body: _formData
+      })
+      .then((response) => {
+          console.log('response')
+          console.log(response)
+          return response.json()
+        })
+        .then((data) => {
+          alert('Message envoyé avec succès!');
+          e.target.reset();
+        })
+        .catch((error) => {
+          let _errorMessage = document.createElement('div');
+          _errorMessage.setAttribute('id', 'alert');
+          _errorMessage.classList.add('mt-4');
+          _errorMessage.classList.add('text-danger');
+          _errorMessage.textContent = 'Erreur lors de l\'envoi du message. Veuillez réessayer plus tard.';
+          e.target.appendChild(_errorMessage)
+          // console.log('error')
+          // console.log(error)
+          // console.error('Error:', error)
+        });
     }
   </script>
 @endsection

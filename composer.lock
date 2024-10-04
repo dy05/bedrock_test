@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c6f32dcd909adce3a130a30bbe48a567",
+    "content-hash": "914145fc23a1975f860584221fd2f5e0",
     "packages": [
         {
             "name": "brick/math",
@@ -2668,6 +2668,43 @@
                 }
             ],
             "time": "2024-09-21T08:32:55+00:00"
+        },
+        {
+            "name": "log1x/wp-smtp",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Log1x/wp-smtp.git",
+                "reference": "d641f5cd02d916718ce90e7dd99a32794ebc861b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Log1x/wp-smtp/zipball/d641f5cd02d916718ce90e7dd99a32794ebc861b",
+                "reference": "d641f5cd02d916718ce90e7dd99a32794ebc861b",
+                "shasum": ""
+            },
+            "type": "package",
+            "autoload": {
+                "files": [
+                    "src/SMTP.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brandon Nifong",
+                    "email": "brandon@tendency.me"
+                }
+            ],
+            "description": "Simple package for handling WordPress SMTP with .env when using the Roots stack.",
+            "support": {
+                "issues": "https://github.com/Log1x/wp-smtp/issues",
+                "source": "https://github.com/Log1x/wp-smtp/tree/v1.0.2"
+            },
+            "time": "2021-01-23T05:04:42+00:00"
         },
         {
             "name": "monolog/monolog",
